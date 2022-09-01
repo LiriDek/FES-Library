@@ -116,6 +116,7 @@ li {
     text-align: center;
     border: none;
     color: #7342d6;
+    display: none;
 }
 
 .menu__backdrop {
@@ -126,14 +127,23 @@ li {
     right: 0;
     bottom: 0;
     z-index: 5;
-    /* display: flex;*/
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    transition: all 300ms ease;
+    opacity: 0;
 }
 
 .menu--open .menu__backdrop {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Scrolling down become impossible when the burger menu is open*/
+.menu--open {
+    max-height: 100vh;
+    overflow-y: hidden;
 }
 
 .menu__links {
@@ -257,6 +267,7 @@ button:active {
 .highlight__wrapper {
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .highlight {
@@ -265,7 +276,6 @@ button:active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .highlight__para {
@@ -289,6 +299,7 @@ button:active {
 .highlight__subtitle {
     font-size: 20px;
     margin-bottom: 16px;
+    text-align: center;
 }
 
 /* FEATURES */
@@ -392,3 +403,47 @@ footer {
     color: white;
 }
 
+/* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
+
+@media (max-width: 768px) {
+    .header__description {
+        padding: 0 24px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    button {
+        font-size: 18px;
+    }
+
+    .book {
+        width: 50%;
+    }
+}
+
+/* SMALL PHONES, LARGE SMARTPHONES */
+
+@media (max-width: 550px) {
+    .nav__links {
+        display: none;
+    }
+
+    .btn__menu {
+        display: block;
+    }
+
+    .highlight {
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .highlight:not(:last-child) {
+        margin-bottom: 24px;
+    }
+}
